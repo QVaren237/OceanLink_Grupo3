@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalle Actividad · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            <a class="nav-item" href="dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>Mantenimientos Activos</span>
+            </a>
+            <a class="nav-item active" href="historial.html">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Historial</span>
+            </a>
+        </nav>
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Maint. Coordinator</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Maintenance Coordinator / Detalles</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Maint. Coordinator</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="#">Editar perfil</a>
+                    <a href="#">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-head">
+                <div>
+                    <h1>Actividad Realizada - LS: Callao</h1>
+                </div>
+            </div>
+
+            <div class="card card-pad" style="max-width: 900px;">
+                <textarea class="input" style="height: 300px; font-size: 13.5px; line-height: 1.6; resize: none; background-color: var(--line);" disabled>El día 20 de Julio de 2026 se procedió con la desconexión del enrutador perimetral de la Landing Station del Callao para realizar el reemplazo de la fuente de poder defectuosa. 
+                
+Se validó la redundancia energética y el tráfico fue conmutado exitosamente sin pérdidas de paquetes reportadas en la monitorización central. Tiempo total de intervención en sitio: 3 horas con 15 minutos. El sistema actual se encuentra 100% operativo.</textarea>
+
+                <div class="form-actions" style="margin-top: 30px;">
+                    <a href="historial.html" class="btn btn-outline" style="padding: 12px 40px;">Volver</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

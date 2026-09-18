@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Planificar Ampliación · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="../Clientes/assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            <a class="nav-item" href="../panel.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Panel General</span></a>
+            <a class="nav-item" href="../Clientes/index.html"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Clientes y servicios</span></a>
+            <a class="nav-item" href="dashboard.html"><svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg><span>Capacidad</span></a>
+            <a class="nav-item" href="solicitudes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Solicitudes</span></a>
+            <a class="nav-item active" href="alertas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span>Alertas de Red</span></a>
+            <a class="nav-item" href="historico.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span>Histórico</span></a>
+        </nav>
+        <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Capacity Planner</div></div></div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Capacity Planner</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo"><div class="un">Gerson Garcia</div><div class="ur">Capacity Planner</div></div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu"><a href="../Clientes/editar-perfil.html">Editar perfil</a><a href="../Clientes/login.html">Cerrar sesión</a></div>
+            </div>
+        </div>
+
+        <div class="content" style="flex: 1;">
+            <div style="margin-bottom: 5px;">
+                <a href="alertas.html" class="link">&lt;- Volver a Alertas</a>
+            </div>
+            
+            <div class="page-head">
+                <div>
+                    <h1>Planificar Ampliación de Capacidad (Upgrade)</h1>
+                    <div class="psub">Inicia el requerimiento técnico para incrementar la capacidad física del segmento saturado.</div>
+                </div>
+            </div>
+
+            <div class="card card-pad" style="max-width: 720px;">
+                <!-- Datos del enlace pre-llenados e inmodificables -->
+                <div style="background: var(--danger-soft); border: 1px solid #e7babb; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                    <div style="display: grid; grid-template-columns: 140px 1fr; gap: 10px; font-size: 12.5px;">
+                        <span style="color: var(--danger); font-weight: 600;">Segmento Crítico:</span>
+                        <strong style="color: var(--danger);">ENL-003 (Lima - Ica)</strong>
+                        
+                        <span style="color: var(--danger); font-weight: 600;">Estado Actual:</span>
+                        <span><strong>98% Utilizado</strong> (98 Gbps / 100 Gbps)</span>
+                    </div>
+                </div>
+
+                <form id="ampliacionForm" novalidate onsubmit="validarAmpliacion(event)">
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        
+                        <div class="field">
+                            <label>Nueva Capacidad Total Deseada (Gbps) (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <input type="number" id="capacidadNueva" class="input" placeholder="Ej: 200" min="101" required>
+                                <div id="err-capacidad" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: La nueva capacidad debe ser mayor a la actual (100 Gbps).
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Fecha Límite Sugerida (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <input type="date" id="fechaLimite" class="input" required>
+                                <div id="err-fecha" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: Debe seleccionar una fecha límite para la ejecución.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field" style="grid-column: span 2;">
+                            <label>Justificación Técnica (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <textarea id="justificacion" class="input" rows="3" placeholder="Ej: El segmento ha superado el 95% de utilización, se requiere instalar nuevas tarjetas de red..." required></textarea>
+                                <div id="err-justificacion" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: Debe justificar la necesidad de la ampliación.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hint" style="margin-top: 10px;">(*) Campos obligatorios</div>
+
+                    <div class="form-actions" style="justify-content: flex-end; margin-top: 20px;">
+                        <a href="alertas.html" class="btn btn-outline">Cancelar</a>
+                        <button type="submit" class="btn btn-danger">Solicitar Ampliación a Ingeniería</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validarAmpliacion(event) {
+        event.preventDefault(); 
+        
+        let isValid = true;
+        const capActual = 100;
+        
+        const capInput = document.getElementById('capacidadNueva');
+        const fechaInput = document.getElementById('fechaLimite');
+        const justInput = document.getElementById('justificacion');
+
+        // Limpiar estilos de error
+        document.querySelectorAll('.input').forEach(el => el.classList.remove('bad'));
+        document.querySelectorAll('.err').forEach(el => el.style.display = 'none');
+
+        // Validar capacidad (debe ser mayor a la instalada actualmente)
+        if (capInput.value === '' || parseInt(capInput.value) <= capActual) {
+            capInput.classList.add('bad');
+            document.getElementById('err-capacidad').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validar fecha
+        if (fechaInput.value === '') {
+            fechaInput.classList.add('bad');
+            document.getElementById('err-fecha').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validar justificación
+        if (justInput.value.trim() === '') {
+            justInput.classList.add('bad');
+            document.getElementById('err-justificacion').style.display = 'block';
+            isValid = false;
+        }
+
+        if (isValid) {
+            window.location.href = "alerta-exito.html";
+        }
+    }
+
+    // Quitar alertas al escribir
+    document.getElementById('capacidadNueva').addEventListener('input', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-capacidad').style.display = 'none';
+    });
+    document.getElementById('fechaLimite').addEventListener('change', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-fecha').style.display = 'none';
+    });
+    document.getElementById('justificacion').addEventListener('input', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-justificacion').style.display = 'none';
+    });
+</script>
+</body>
+</html>

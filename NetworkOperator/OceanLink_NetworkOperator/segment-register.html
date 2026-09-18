@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=1280"><title>Registrar Red submarina | OceanLink</title><link rel="stylesheet" href="css/styles.css"></head><body><div class="layout">
+    <aside class="sidebar"><div class="brand brand-side"><div class="logo"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div></div><nav class="nav-sec"><div class="nav-label">Módulos</div><a class="nav-item" href="infrastructure.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M12 7.2v4.2M12 11.4 6.8 16M12 11.4l5.2 4.6"/></svg><span>Infraestructura de red</span></a><a class="nav-item" href="stations.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/></svg><span>Landing Stations</span></a><a class="nav-item" href="segments.html"><svg viewBox="0 0 24 24"><path d="M12 4l8 8-8 8-8-8 8-8z"/></svg><span>Redes submarinas</span></a></nav><div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Network Operator</div></div></div></aside>
+    <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">OceanLink <strong>/</strong> Network Operator
+</div>
+      <div class="profile">
+<div class="profile-trigger" tabindex="0" aria-label="Menú de usuario">
+<div class="avatar">GO</div><div><strong>Gerson García</strong><small>Network Operator</small></div>
+<div class="profile-menu"><a href="edit-profile.html" class="profile-menu-link">Editar perfil</a><button type="button">Cerrar sesión</button></div>
+</div>
+</div>
+    </header>
+    
+<div class="form-wrap">
+<div class="form-head"><div><p class="eyebrow">REDES SUBMARINAS · REGISTRO</p><h1>Registrar Red submarina</h1><p>Completa la información del nuevo segmento de fibra.</p></div><div class="form-symbol">◇</div></div>
+<form class="card form-card" action="segment-confirm.html" method="get">
+<div class="form-grid">
+<label class="field">Nombre de la red*<input name="name" required placeholder="Ej. PER-ECU-01" oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><span class="error">Este campo es obligatorio.</span></label>
+<label class="field">Capacidad*<input name="capacity" required placeholder="Ej. 1.2 Tbps" oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><span class="error">Este campo es obligatorio.</span></label>
+<label class="field">Landing Station origen*<select name="origin" required oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><option value="">Seleccionar estación</option><option>LS PUCP</option><option>LS Callao</option><option>LS Paita</option><option>LS Guayaquil</option></select><span class="error">Este campo es obligatorio.</span></label>
+<label class="field">Landing Station destino*<select name="destination" required oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><option value="">Seleccionar estación</option><option>LS Guayaquil</option><option>LS Valparaíso</option><option>LS Panamá</option><option>LS Arica</option></select><span class="error">Este campo es obligatorio.</span></label>
+<label class="field">Longitud*<input name="length" required placeholder="Ej. 1,050 km" oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><span class="error">Este campo es obligatorio.</span></label>
+<label class="field">Estado*<select name="status" required oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"><option value="">Seleccionar estado</option><option>Operativo</option><option>Degradado</option><option>En mantenimiento</option><option>Fuera de servicio</option></select><span class="error">Este campo es obligatorio.</span></label>
+<label class="field full">Descripción*<textarea name="description" required placeholder="Describe brevemente el segmento y su conexión." oninvalid="this.closest('.field').classList.add('invalid'); event.preventDefault();" oninput="this.closest('.field').classList.remove('invalid')"></textarea><span class="error">Este campo es obligatorio.</span></label>
+</div>
+<div class="form-actions"><a class="btn ghost" href="segments.html">Cancelar</a><button class="btn primary" type="submit">Continuar</button></div>
+</form></div>
+<footer class="footer"><span>OceanLink · Centro de operaciones</span></footer></main></div></body></html>

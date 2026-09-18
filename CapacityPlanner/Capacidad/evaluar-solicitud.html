@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evaluar Solicitud · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="../Clientes/assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            
+            <a class="nav-item" href="../panel.html">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+                <span>Panel General</span>
+            </a>
+            
+            <a class="nav-item" href="../Clientes/index.html">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Clientes y servicios</span>
+            </a>
+            
+            <a class="nav-item" href="dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+                <span>Capacidad</span>
+            </a>
+
+            <a class="nav-item active" href="solicitudes.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Solicitudes</span>
+            </a>
+
+            <a class="nav-item" href="alertas.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span>Alertas de Red</span>
+            </a>
+
+            <a class="nav-item" href="historico.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Histórico</span>
+            </a>
+        </nav>
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Capacity Planner</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Capacity Planner</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Capacity Planner</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="../Clientes/editar-perfil.html">Editar perfil</a>
+                    <a href="../Clientes/login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div>
+                <a href="solicitudes.html" class="link">&lt;- Volver a bandeja</a>
+            </div>
+            
+            <div class="page-head" style="margin-top: 5px;">
+                <div>
+                    <h1>Evaluación de Solicitud SOL-042</h1>
+                    <div class="psub">Análisis de factibilidad técnica para provisión de nueva capacidad.</div>
+                </div>
+            </div>
+
+            <div class="card card-pad" style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 16px; font-family: var(--head); font-weight: 800;">DATOS DEL REQUERIMIENTO</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 12px;">
+                    <div><span style="color:var(--muted)">Cliente:</span> <strong style="color: var(--ink);">Win Empresas S.A.</strong></div>
+                    <div><span style="color:var(--muted)">RUC:</span> <strong>20556214309</strong></div>
+                    <div><span style="color:var(--muted)">Fecha de Solicitud:</span> <strong>15/10/2026</strong></div>
+                    <div><span style="color:var(--muted)">Tipo:</span> <strong>Servicio Nuevo</strong></div>
+                </div>
+            </div>
+
+            <form class="card card-pad">
+                <h3 style="margin-bottom: 16px; font-family: var(--head); font-weight: 800; border-bottom: 1px solid var(--line); padding-bottom: 10px;">ANÁLISIS DE FACTIBILIDAD</h3>
+                
+                <div style="display: flex; gap: 30px; align-items: flex-start; margin-top: 20px;">
+                    <div class="field" style="flex: 1;">
+                        <label>Capacidad Requerida por el Cliente</label>
+                        <input type="text" class="input" value="40 Gbps" disabled style="background-color: var(--warn-soft); color: var(--warn); font-weight: bold; font-size: 16px;">
+                    </div>
+                    <div class="field" style="flex: 1;">
+                        <label>Capacidad Disponible en el Segmento</label>
+                        <input type="text" class="input" value="150 Gbps" disabled style="background-color: var(--ok-soft); color: var(--ok); font-weight: bold; font-size: 16px;">
+                    </div>
+                </div>
+
+                <div class="field" style="margin-top: 15px;">
+                    <label>Condición Técnica de la Red</label>
+                    <div class="info-strip" style="background: var(--mint); margin-bottom: 15px;">
+                        <div class="ii">✓</div>
+                        <div>
+                            <div class="it" style="color: var(--ok);">Factibilidad Positiva</div>
+                            <div class="id">El enlace cuenta con capacidad suficiente para soportar la carga solicitada.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Comentarios de Evaluación (Opcional)</label>
+                    <textarea class="input" rows="3" placeholder="Ingresa notas técnicas sobre tu decisión..."></textarea>
+                </div>
+
+                <!-- Botones con funciones JS para redirección realista -->
+                <div class="form-actions" style="justify-content: flex-end; margin-top: 20px;">
+                    <a href="solicitudes.html" class="btn btn-outline">Cancelar</a>
+                    <button type="button" class="btn btn-danger" onclick="rechazarSolicitud()">Rechazar Solicitud</button>
+                    <button type="button" class="btn btn-primary" onclick="aprobarSolicitud()">Aprobar y Reservar</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function rechazarSolicitud() {
+        alert('La solicitud ha sido rechazada. Se notificará al área correspondiente.');
+        window.location.href = 'solicitudes.html';
+    }
+
+    function aprobarSolicitud() {
+        alert('Solicitud aprobada técnicamente. A continuación, serás redirigido para realizar la reserva de capacidad.');
+        window.location.href = 'reserva.html';
+    }
+</script>
+</body>
+</html>

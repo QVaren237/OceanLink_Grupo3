@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programar Mantenimiento · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            <a class="nav-item active" href="dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>Mantenimientos Activos</span>
+            </a>
+            <a class="nav-item" href="historial.html">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Historial</span>
+            </a>
+        </nav>
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Maint. Coordinator</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Maintenance Coordinator / Programar</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Maint. Coordinator</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="#">Editar perfil</a>
+                    <a href="#">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-head">
+                <div>
+                    <a href="dashboard.html" class="link" style="color: var(--faint); margin-bottom: 5px; display: inline-block;">&larr; Volver al dashboard</a>
+                    <h1>Programar Nuevo Mantenimiento</h1>
+                </div>
+            </div>
+
+            <form class="card card-pad" onsubmit="mostrarModal(event)">
+                <div class="card-head" style="padding-left: 0; padding-right: 0; border: none; margin-bottom: 10px;">
+                    <h3>1. Detalles de la Intervención</h3>
+                </div>
+                
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="field">
+                        <label>Tipo de Mantenimiento:</label>
+                        <select class="input">
+                            <option>Preventivo</option>
+                            <option>Correctivo</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Infraestructura:</label>
+                        <select class="input">
+                            <option>Segmento: Lima - Trujillo</option>
+                            <option>LS: Máncora</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Fecha de Inicio:</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="date" class="input" value="2026-08-10">
+                            <input type="time" class="input" value="14:00" style="width: 130px;">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Duración Estimada (hs):</label>
+                        <input type="number" class="input" value="4" min="1">
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--line); margin: 25px 0 15px 0;"></div>
+
+                <div class="card-head" style="padding-left: 0; padding-right: 0; border: none;">
+                    <h3>2. Análisis de Impacto</h3>
+                </div>
+                <div style="background: var(--danger-soft); border-radius: 12px; padding: 15px; margin-bottom: 25px;">
+                    <h4 style="font-size: 13px; color: var(--danger-btn); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        ALERTA: Los siguientes servicios podrían ser afectados:
+                    </h4>
+                    <ul style="list-style: none; font-size: 12px; color: var(--ink); line-height: 1.8; padding-left: 5px;">
+                        <li>- Servicio ID 901 | Cliente: Banco GNB | Cap. 10 Gbps</li>
+                        <li>- Servicio ID 905 | Cliente: Agora | Cap. 5 Gbps</li>
+                    </ul>
+                </div>
+
+                <div class="form-actions">
+                    <a href="dashboard.html" class="btn btn-outline">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar Programación</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Oficial del Diseño Base -->
+<div id="modalExito" class="modal-back" style="display: none;">
+    <div class="modal">
+        <h3>Se guardó la programación correctamente</h3>
+        <div class="form-actions">
+            <a href="dashboard.html" class="btn btn-primary">Aceptar</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrarModal(event) {
+        event.preventDefault();
+        document.getElementById('modalExito').style.display = 'flex';
+    }
+</script>
+</body>
+</html>

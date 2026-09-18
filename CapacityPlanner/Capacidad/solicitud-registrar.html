@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrar Solicitud · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="../Clientes/assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            <a class="nav-item" href="../panel.html">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+                <span>Panel General</span>
+            </a>
+            <a class="nav-item" href="../Clientes/index.html">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Clientes y servicios</span>
+            </a>
+            <a class="nav-item" href="dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+                <span>Capacidad</span>
+            </a>
+            <a class="nav-item active" href="solicitudes.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Solicitudes</span>
+            </a>
+            <a class="nav-item" href="alertas.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span>Alertas de Red</span>
+            </a>
+            <a class="nav-item" href="historico.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Histórico</span>
+            </a>
+        </nav>
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Capacity Planner</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Capacity Planner</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Capacity Planner</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="../Clientes/editar-perfil.html">Editar perfil</a>
+                    <a href="../Clientes/login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" style="flex: 1;">
+            <div>
+                <a href="dashboard.html" class="link">&lt;- Volver a Capacidad</a>
+            </div>
+            
+            <div class="page-head" style="margin-top: 5px;">
+                <div>
+                    <h1>Registrar Solicitud Comercial</h1>
+                    <div class="psub">Inicia el trámite para evaluar la asignación de nueva capacidad en la red.</div>
+                </div>
+            </div>
+
+            <div class="card card-pad" style="max-width: 720px;">
+                <form id="solicitudForm" novalidate onsubmit="validarSolicitud(event)">
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        
+                        <!-- Cliente -->
+                        <div class="field" style="grid-column: span 2;">
+                            <label>Cliente Titular (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <input type="text" id="cliente" class="input" placeholder="Ej: Entel Perú S.A." required>
+                                <div id="err-cliente" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: Debe ingresar la razón social del cliente.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enlace Solicitado -->
+                        <div class="field" style="grid-column: span 2;">
+                            <label>Ruta / Enlace Solicitado (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <select id="enlace" class="input" required style="cursor: pointer;">
+                                    <option value="" disabled selected>Selecciona la ruta solicitada...</option>
+                                    <option value="Lima-Ica">Lima - Ica</option>
+                                    <option value="Lima-Trujillo">Lima - Trujillo</option>
+                                    <option value="Lurin-Arica">Lurín - Arica</option>
+                                    <option value="Arica-Valparaiso">Arica - Valparaiso</option>
+                                    <option value="Mancora-Tumbes">Máncora - Tumbes</option>
+                                </select>
+                                <div id="err-enlace" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: Seleccione la ruta o segmento de red requerido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Capacidad -->
+                        <div class="field">
+                            <label>Capacidad a solicitar (Gbps) (*)</label>
+                            <div style="display: flex; flex-direction: column;">
+                                <input type="number" id="capacidad" class="input" placeholder="Ej: 50" min="1" required>
+                                <div id="err-capacidad" class="err" style="display: none; font-weight: normal; margin-top: 6px;">
+                                    Error: Ingrese un valor numérico válido (mayor a 0 Gbps).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fecha Deseada -->
+                        <div class="field">
+                            <label>Fecha de Activación Deseada</label>
+                            <input type="date" class="input">
+                        </div>
+
+                        <!-- Justificación -->
+                        <div class="field" style="grid-column: span 2;">
+                            <label>Justificación comercial / técnica</label>
+                            <textarea class="input" rows="3" placeholder="Motivo de la solicitud, ej: Conexión de nuevo datacenter, ampliación de troncal..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="hint" style="margin-top: 10px;">(*) Campos obligatorios</div>
+
+                    <div class="form-actions" style="justify-content: flex-end; margin-top: 20px;">
+                        <a href="dashboard.html" class="btn btn-outline">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar Solicitud</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validarSolicitud(event) {
+        event.preventDefault(); // Evita que recargue la página automáticamente
+        
+        let isValid = true;
+        
+        // Elementos a validar
+        const clienteInput = document.getElementById('cliente');
+        const enlaceInput = document.getElementById('enlace');
+        const capacidadInput = document.getElementById('capacidad');
+
+        // Limpiar errores previos
+        document.querySelectorAll('.input').forEach(el => el.classList.remove('bad'));
+        document.querySelectorAll('.err').forEach(el => el.style.display = 'none');
+
+        // Validar Cliente
+        if (clienteInput.value.trim() === '') {
+            clienteInput.classList.add('bad');
+            document.getElementById('err-cliente').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validar Enlace
+        if (enlaceInput.value === '') {
+            enlaceInput.classList.add('bad');
+            document.getElementById('err-enlace').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validar Capacidad
+        if (capacidadInput.value === '' || parseInt(capacidadInput.value) <= 0) {
+            capacidadInput.classList.add('bad');
+            document.getElementById('err-capacidad').style.display = 'block';
+            isValid = false;
+        }
+
+        // Si todo está bien, mandamos a la pantalla de confirmación
+        if (isValid) {
+            window.location.href = "solicitud-confirmar.html";
+        }
+    }
+
+    // Quitar advertencia roja cuando el usuario empieza a escribir/seleccionar
+    document.getElementById('cliente').addEventListener('input', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-cliente').style.display = 'none';
+    });
+    
+    document.getElementById('enlace').addEventListener('change', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-enlace').style.display = 'none';
+    });
+
+    document.getElementById('capacidad').addEventListener('input', function() {
+        this.classList.remove('bad');
+        document.getElementById('err-capacidad').style.display = 'none';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de Mantenimiento · OceanLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            <a class="nav-item active" href="dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>Mantenimientos Activos</span>
+            </a>
+            <a class="nav-item" href="historial.html">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Historial</span>
+            </a>
+        </nav>
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Maint. Coordinator</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Maintenance Coordinator / Gestión</div>
+            <div class="grow"></div>
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Maint. Coordinator</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="#">Editar perfil</a>
+                    <a href="#">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-head">
+                <div>
+                    <h1>Gestión de mantenimiento #013 - LS: Máncora</h1>
+                </div>
+            </div>
+
+            <form class="card card-pad" onsubmit="validarYGuardar(event)">
+                <div class="form-grid" style="max-width: 100%;">
+                    <div class="field" style="max-width: 300px;">
+                        <label>Estado Actual:</label>
+                        <select id="selectEstado" class="input">
+                            <option value="Programado">Programado</option>
+                            <option value="En Proceso">En Proceso</option>
+                            <option value="Finalizado" selected>Finalizado</option>
+                        </select>
+                    </div>
+
+                    <div class="field" style="margin-top: 25px;">
+                        <label>Actividades Realizadas</label>
+                        <textarea id="txtActividades" class="input" style="height: 180px; resize: vertical;" placeholder="Escriba aquí su justificación"></textarea>
+                        <div id="msjError" class="error-text">*Error de validación: No puede marcar el mantenimiento como "Finalizado" sin registrar las actividades realizadas. Complete el cuadro de texto.</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="dashboard.html" class="btn btn-outline">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validarYGuardar(event) {
+        event.preventDefault(); 
+        
+        const estado = document.getElementById('selectEstado').value;
+        const actividades = document.getElementById('txtActividades');
+        const errorMsg = document.getElementById('msjError');
+
+        // Regla: Si está finalizado, el texto no puede estar vacío
+        if (estado === 'Finalizado' && actividades.value.trim() === '') {
+            actividades.classList.add('is-invalid');
+            errorMsg.style.display = 'block';
+        } else {
+            actividades.classList.remove('is-invalid');
+            errorMsg.style.display = 'none';
+            // Simular guardado redirigiendo al dashboard
+            window.location.href = 'dashboard.html';
+        }
+    }
+
+    // Quitar el error en tiempo real si el usuario empieza a escribir
+    document.getElementById('txtActividades').addEventListener('input', function() {
+        this.classList.remove('is-invalid');
+        document.getElementById('msjError').style.display = 'none';
+    });
+</script>
+</body>
+</html>

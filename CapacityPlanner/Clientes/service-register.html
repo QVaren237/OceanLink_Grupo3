@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asignar Servicio · OceanLink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Capacidad/styles.css?v=5">
+</head>
+<body>
+  <div class="shell">
+    <aside class="side">
+      <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+      <nav class="nav-sec">
+        <div class="nav-label">Módulos</div>
+        <a class="nav-item" href="../panel.html">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span>Panel General</span>
+        </a>
+        <a class="nav-item active" href="index.html">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span>Clientes y servicios</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/dashboard.html">
+          <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+          <span>Capacidad</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/solicitudes.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Solicitudes</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/alertas.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>Alertas de Red</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Histórico</span>
+        </a>
+      </nav>
+      <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Capacity Planner</div></div></div>
+    </aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="crumb">OceanLink / Capacity Planner</div>
+        <div class="grow"></div>
+        <div class="userpill" tabindex="0">
+            <div class="avatar">GG</div>
+            <div class="uinfo">
+                <div class="un">Gerson Garcia</div>
+                <div class="ur">Capacity Planner</div>
+            </div>
+            <span class="ucaret">▾</span>
+            <div class="usermenu">
+                <a href="editar-perfil.html">Editar perfil</a>
+                <a href="login.html">Cerrar sesión</a>
+            </div>
+        </div>
+      </div>
+
+      <div class="content" style="flex: 1;">
+        <div class="page-head">
+          <div>
+            <h1>Registrar nuevo servicio</h1>
+            <div class="psub">Asigna cliente, registra fecha de activación y selecciona los tramos submarinos de la ruta.</div>
+          </div>
+        </div>
+
+        <div class="card card-pad" style="max-width: 720px;">
+          <form id="serviceForm" novalidate>
+            <div class="field">
+              <label>Cliente titular (*)</label>
+              <input type="text" class="input" value="América Móvil Perú S.A.C." readonly style="background: var(--mint);">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 16px;">
+              <div class="field" style="margin-bottom: 0;">
+                <label>Estación Origen (*)</label>
+                <input type="text" class="input" id="origen" required>
+                <div class="err" id="err-origen" style="display:none;">Este campo es obligatorio.</div>
+              </div>
+
+              <div class="field" style="margin-bottom: 0;">
+                <label>Estación Destino (*)</label>
+                <input type="text" class="input" id="destino" required>
+                <div class="err" id="err-destino" style="display:none;">Este campo es obligatorio.</div>
+              </div>
+            </div>
+
+            <div class="field" style="max-width: 280px; margin: 0 auto 24px auto;">
+              <label>Fecha de activación</label>
+              <input type="date" class="input" id="fechaActivacion">
+            </div>
+
+            <div class="slabel" style="margin-top: 20px;">Asignación de ruta (Segmentos de fibra)</div>
+            <div class="hint" style="margin-bottom: 12px;">Selecciona los segmentos que componen la ruta del enlace:</div>
+
+            <div class="radio-list">
+              <label class="radio sel">
+                <input type="checkbox" checked style="accent-color: var(--teal);">
+                [X] SEG-01: Lurín &lt;-&gt; Arica | Disp: 180 Gbps | Estado: Operativo
+              </label>
+              <label class="radio sel">
+                <input type="checkbox" checked style="accent-color: var(--teal);">
+                [X] SEG-02: Arica &lt;-&gt; Valparaíso | Disp: 90 Gbps | Estado: Operativo
+              </label>
+              <label class="radio">
+                <input type="checkbox" style="accent-color: var(--teal);">
+                [ ] SEG-03: Lurín &lt;-&gt; Manta | Disp: 0 Gbps | Estado: Fuera de servicio
+              </label>
+            </div>
+
+            <div class="hint" style="margin-top: 18px;">Campos obligatorios (*)</div>
+
+            <div class="form-actions" style="justify-content: flex-end; margin-top: 10px;">
+              <a href="client-detail.html" class="btn btn-outline">Cancelar</a>
+              <button type="button" class="btn btn-primary" onclick="validateService()">Guardar servicio</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+    </div>
+  </div>
+
+  <script>
+    function validateService() {
+      let isValid = true;
+      ['origen', 'destino'].forEach(id => {
+        const input = document.getElementById(id);
+        const err = document.getElementById('err-' + id);
+        if (!input.value.trim()) {
+          input.classList.add('bad');
+          err.style.display = 'block';
+          isValid = false;
+        } else {
+          input.classList.remove('bad');
+          err.style.display = 'none';
+        }
+      });
+
+      if (isValid) {
+        window.location.href = 'service-success.html';
+      }
+    }
+  </script>
+</body>
+</html>

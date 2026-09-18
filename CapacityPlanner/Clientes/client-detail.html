@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de Cliente · OceanLink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Capacidad/styles.css?v=5">
+  <style>
+    /* Corrección para mantener los modales ocultos por defecto */
+    .modal-back { display: none; }
+    .modal-back.open { display: flex; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="side">
+      <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+      <nav class="nav-sec">
+        <div class="nav-label">Módulos</div>
+        <a class="nav-item" href="../panel.html">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span>Panel General</span>
+        </a>
+        <a class="nav-item active" href="index.html">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span>Clientes y servicios</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/dashboard.html">
+          <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+          <span>Capacidad</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/solicitudes.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Solicitudes</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/alertas.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>Alertas de Red</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Histórico</span>
+        </a>
+      </nav>
+      <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Capacity Planner</div></div></div>
+    </aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="crumb">OceanLink / Capacity Planner</div>
+        <div class="grow"></div>
+        
+        <div class="userpill" tabindex="0">
+            <div class="avatar">GG</div>
+            <div class="uinfo">
+                <div class="un">Gerson Garcia</div>
+                <div class="ur">Capacity Planner</div>
+            </div>
+            <span class="ucaret">▾</span>
+            <div class="usermenu">
+                <a href="editar-perfil.html">Editar perfil</a>
+                <a href="login.html">Cerrar sesión</a>
+            </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div style="margin-bottom: 15px;">
+          <a href="index.html" class="btn btn-outline">Volver</a>
+        </div>
+
+        <div class="card card-pad">
+          <h3 style="margin-bottom: 16px; font-family: var(--head); font-weight: 800;">INFORMACIÓN DEL CLIENTE: América Móvil Perú S.A.</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 11.5px;">
+            <div><span style="color:var(--muted)">ID Cliente:</span> <strong>C001</strong></div>
+            <div><span style="color:var(--muted)">Estado:</span> <span class="pill pill-ok"><span class="dot"></span>Activo</span></div>
+            <div><span style="color:var(--muted)">RUC:</span> <strong>20467534012</strong></div>
+            <div><span style="color:var(--muted)">Teléfono:</span> <strong>01-710-2000</strong></div>
+            <div><span style="color:var(--muted)">Razón Soc:</span> <strong>América Móvil Perú</strong></div>
+            <div><span style="color:var(--muted)">Correo:</span> <strong>contacto@claro.pe</strong></div>
+            <div><span style="color:var(--muted)">Dirección:</span> <strong>Av. Nicolás Arriola 480</strong></div>
+            <div><span style="color:var(--muted)">Persona Contacto:</span> <strong>Juan Pérez (Jefe)</strong></div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+          <h3 style="font-family: var(--head); font-weight: 800; font-size: 18px; margin: 0;">Servicios Contratados</h3>
+          <a href="service-register.html" class="btn btn-primary">+ Asignar nuevo servicio</a>
+        </div>
+
+        <div class="card">
+          <div class="card-pad" style="border-bottom:1px solid var(--line)">
+            <div class="usearch-box" style="max-width:50%;min-width:420px">
+              <span class="usearch-ic">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              </span>
+              <input id="usearch" placeholder="Buscar por ID o capacidad…">
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table id="utable">
+              <thead>
+                <tr>
+                  <th class="sortable" data-col="0">ID Servicio <span class="sarrow">⇅</span></th>
+                  <th class="sortable" data-col="1">Origen -&gt; Destino <span class="sarrow">⇅</span></th>
+                  <th class="sortable" data-col="2">Capacidad <span class="sarrow">⇅</span></th>
+                  <th class="sortable" data-col="3">Fecha de Activación <span class="sarrow">⇅</span></th>
+                  <th class="sortable" data-col="4">Estado <span class="sarrow">⇅</span></th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="row-SRV-001">
+                  <td data-sort="SRV-001"><strong>SRV-001</strong></td>
+                  <td>Lurín -&gt; Arica</td>
+                  <td data-sort="100"><strong>100 Gbps</strong></td>
+                  <td>12/04/2026</td>
+                  <td data-sort="Activo" class="status-cell"><span class="pill pill-ok"><span class="dot"></span>Activo</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="btn btn-outline btn-icon" title="Ver ruta" onclick="openRouteModal('SRV-001')">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      </button>
+                      <button class="btn btn-outline btn-icon" title="Cambiar estado" onclick="openStatusModal('SRV-001', 'Activo')">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="row-SRV-004">
+                  <td data-sort="SRV-004"><strong>SRV-004</strong></td>
+                  <td>Máncora -&gt; Tumbes</td>
+                  <td data-sort="50"><strong>50 Gbps</strong></td>
+                  <td>20/04/2026</td>
+                  <td data-sort="Activo" class="status-cell"><span class="pill pill-ok"><span class="dot"></span>Activo</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="btn btn-outline btn-icon" title="Ver ruta" onclick="openRouteModal('SRV-004')">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      </button>
+                      <button class="btn btn-outline btn-icon" title="Cambiar estado" onclick="openStatusModal('SRV-004', 'Activo')">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <a class="page-btn" href="#">‹</a>
+            <a class="page-btn active" href="#">1</a>
+            <a class="page-btn" href="#">2</a>
+            <a class="page-btn" href="#">3</a>
+            <span class="page-ellipsis">…</span>
+            <a class="page-btn" href="#">15</a>
+            <a class="page-btn" href="#">›</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+    </div>
+  </div>
+
+  <!-- Modal para Cambiar Estado -->
+  <div class="modal-back" id="statusModal">
+    <div class="modal">
+      <h3 id="statusModalTitle">Cambiar estado del servicio</h3>
+      <p>Selecciona el nuevo estado para el servicio <strong id="statusModalSrv"></strong>.</p>
+      
+      <div class="field" style="margin-top: 15px;">
+        <label>Nuevo Estado</label>
+        <select class="input" id="newStatusSelect">
+          <option value="Activo">Activo</option>
+          <option value="Suspendido">Suspendido</option>
+          <option value="Cancelado">Cancelado</option>
+        </select>
+      </div>
+
+      <div class="form-actions" style="margin-top: 20px;">
+        <button class="btn btn-outline" onclick="closeStatusModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="confirmStatusChange()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detalle de Ruta (Sin la palabra "[Verde]") -->
+  <div class="modal-back" id="routeModal">
+    <div class="modal" style="width: 580px;">
+      <h3 style="border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 12px; font-size: 15px;">DETALLE DE RUTA — SERVICIO <span id="routeModalTitleSrv">SRV-001</span></h3>
+      
+      <div style="font-size: 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
+        <strong>Cliente:</strong> América Móvil Perú S.A. | <strong>Capacidad:</strong> 100 Gbps | <strong>Estado:</strong> Activo
+      </div>
+      
+      <div style="font-size: 12px;">
+        <strong style="display: block; margin-bottom: 12px;">Tramos asignados a la ruta:</strong>
+        
+        <div style="margin-bottom: 10px;">
+          <strong>(1) [Lurín &lt;-&gt; Arica]</strong> - SEG-01 | Cap. Consumida: 100 Gbps | Estado: Operativo
+        </div>
+        
+        <div>
+          <strong>(2) [Arica &lt;-&gt; Valparaíso]</strong> - SEG-02 | Cap. Consumida: 100 Gbps | Estado: Operativo
+        </div>
+      </div>
+
+      <div class="form-actions" style="margin-top: 25px;">
+        <button class="btn btn-primary" onclick="closeRouteModal()">Cerrar Ventana</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  let currentServiceId = null;
+
+  function openStatusModal(srvId, currentStatus) {
+    currentServiceId = srvId;
+    document.getElementById('statusModalSrv').innerText = srvId;
+    document.getElementById('newStatusSelect').value = currentStatus;
+    document.getElementById('statusModal').classList.add('open');
+  }
+
+  function closeStatusModal() {
+    document.getElementById('statusModal').classList.remove('open');
+    currentServiceId = null;
+  }
+
+  function confirmStatusChange() {
+    if(!currentServiceId) return;
+    const newStatus = document.getElementById('newStatusSelect').value;
+    const row = document.getElementById('row-' + currentServiceId);
+    
+    if(row) {
+      const statusCell = row.querySelector('.status-cell');
+      if(statusCell) {
+        let pillClass = 'pill-ok';
+        if(newStatus === 'Suspendido') pillClass = 'pill-warn';
+        if(newStatus === 'Cancelado') pillClass = 'pill-crit';
+        
+        statusCell.innerHTML = `<span class="pill ${pillClass}"><span class="dot"></span>${newStatus}</span>`;
+        statusCell.setAttribute('data-sort', newStatus);
+      }
+      const btn = row.querySelector('button[title="Cambiar estado"]');
+      if(btn) btn.setAttribute('onclick', `openStatusModal('${currentServiceId}', '${newStatus}')`);
+    }
+    closeStatusModal();
+  }
+
+  function openRouteModal(srvId) {
+    document.getElementById('routeModalTitleSrv').innerText = srvId;
+    document.getElementById('routeModal').classList.add('open');
+  }
+
+  function closeRouteModal() {
+    document.getElementById('routeModal').classList.remove('open');
+  }
+
+  (function(){
+    var tb=document.getElementById("utable"); if(!tb) return;
+    var body=tb.tBodies[0]; var keys=[];
+    function val(r,i){return r.cells[i].getAttribute("data-sort")||r.cells[i].innerText;}
+    function paint(){document.querySelectorAll("th.sortable").forEach(function(th){var i=+th.dataset.col,f=null;for(var k=0;k<keys.length;k++){if(keys[k].col===i){f=keys[k];break;}}th.querySelector(".sarrow").textContent=f?(f.asc?"\u25B2":"\u25BC"):"\u21C5";});}
+    function apply(){var rows=Array.prototype.slice.call(body.rows);rows.sort(function(a,b){for(var k=0;k<keys.length;k++){var i=keys[k].col;var c=val(a,i).localeCompare(val(b,i),"es",{numeric:true});if(c!==0)return keys[k].asc?c:-c;}return 0;});rows.forEach(function(r){body.appendChild(r);});paint();}
+    document.querySelectorAll("th.sortable").forEach(function(th){th.addEventListener("click",function(){var i=+th.dataset.col;if(keys.length&&keys[0].col===i){keys[0].asc=!keys[0].asc;}else{keys=keys.filter(function(k){return k.col!==i;});keys.unshift({col:i,asc:true});}apply();});});
+    var s=document.getElementById("usearch");
+    if(s){s.addEventListener("input",function(){var q=s.value.toLowerCase();Array.prototype.forEach.call(body.rows,function(r){r.style.display=r.innerText.toLowerCase().indexOf(q)>=0?"":"none";});});}
+  })();
+  </script>
+</body>
+</html>

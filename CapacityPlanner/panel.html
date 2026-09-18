@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel General · OceanLink</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- Enlazado al CSS centralizado de Capacidad -->
+<link rel="stylesheet" href="Capacidad/styles.css?v=5">
+</head>
+<body>
+<div class="shell">
+    <aside class="side">
+        <div class="brand brand-side">
+            <img class="brand-img" src="Clientes/assets/logo.png" alt="Ocean Link Logistics">
+        </div>
+        <nav class="nav-sec">
+            <div class="nav-label">Módulos</div>
+            
+            <a class="nav-item active" href="panel.html">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+                <span>Panel General</span>
+            </a>
+            
+            <a class="nav-item" href="Clientes/index.html">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Clientes y servicios</span>
+            </a>
+            
+            <a class="nav-item" href="Capacidad/dashboard.html">
+                <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+                <span>Capacidad</span>
+            </a>
+
+            <a class="nav-item" href="Capacidad/solicitudes.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Solicitudes</span>
+            </a>
+
+            <a class="nav-item" href="Capacidad/alertas.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span>Alertas de Red</span>
+            </a>
+
+            <a class="nav-item" href="Capacidad/historico.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Histórico</span>
+            </a>
+        </nav>
+        
+        <div class="side-foot">
+            <div class="role-badge">
+                <div class="rl">Rol activo</div>
+                <div class="rn"><span class="dot"></span>Capacity Planner</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="crumb">OceanLink / Capacity Planner</div>
+            <div class="grow"></div>
+            
+            <div class="userpill" tabindex="0">
+                <div class="avatar">GG</div>
+                <div class="uinfo">
+                    <div class="un">Gerson Garcia</div>
+                    <div class="ur">Capacity Planner</div>
+                </div>
+                <span class="ucaret">▾</span>
+                <div class="usermenu">
+                    <a href="Clientes/editar-perfil.html">Editar perfil</a>
+                    <a href="Clientes/login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-head">
+                <div>
+                    <h1>Panel General de Operaciones</h1>
+                    <div class="psub">Vista ejecutiva del estado de la infraestructura submarina y cartera comercial.</div>
+                </div>
+            </div>
+
+            <!-- KPIs Ampliados y Enriquecidos -->
+            <div class="kpis">
+                <div class="kpi">
+                    <span class="kbadge">ACTIVOS</span>
+                    <div class="kv">4</div>
+                    <div class="kl">Clientes registrados</div>
+                </div>
+                <div class="kpi">
+                    <div class="kv">4</div>
+                    <div class="kl">Enlaces submarinos monitoreados</div>
+                </div>
+                <div class="kpi" style="border-left: 4px solid var(--warn);">
+                    <span class="kbadge" style="background: var(--warn-soft); color: var(--warn);">ATENCIÓN</span>
+                    <div class="kv">2</div>
+                    <div class="kl">Solicitudes pendientes de evaluación</div>
+                </div>
+                <div class="kpi" style="border-left: 4px solid var(--danger);">
+                    <span class="kbadge" style="background: var(--danger-soft); color: var(--danger);">RIESGO</span>
+                    <div class="kv">1</div>
+                    <div class="kl">Enlace crítico (> 95% uso)</div>
+                </div>
+            </div>
+
+            <!-- Sección Principal: Tabla Resumen Interactiva -->
+            <div class="card">
+                <div class="card-pad" style="border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                    <div class="usearch-box" style="max-width: 50%; min-width: 380px;">
+                        <span class="usearch-ic">
+                            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                        </span>
+                        <input id="panelSearch" placeholder="Buscar por cliente, servicio o enlace...">
+                    </div>
+                    <a class="link" href="Clientes/index.html">Ver cartera completa &rarr;</a>
+                </div>
+
+                <div class="table-wrap">
+                    <table id="panelTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-col="0">Cliente <span class="sarrow">⇅</span></th>
+                                <th class="sortable" data-col="1">Servicio <span class="sarrow">⇅</span></th>
+                                <th class="sortable" data-col="2">Enlace Submarino <span class="sarrow">⇅</span></th>
+                                <th class="sortable" data-col="3">Capacidad <span class="sarrow">⇅</span></th>
+                                <th class="sortable" data-col="4">Estado <span class="sarrow">⇅</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-sort="América Móvil Perú">
+                                    <div class="u-cell">
+                                        <div class="u-av" style="background: var(--mint); color: var(--teal-dd);">AM</div>
+                                        <div>
+                                            <div class="u-name">América Móvil Perú</div>
+                                            <div class="u-mail">ID: C001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-sort="SRV-001"><strong>SRV-001</strong></td>
+                                <td data-sort="Lurin - Arica">Lurin - Arica (ENL-001)</td>
+                                <td data-sort="100"><strong>100 Gbps</strong></td>
+                                <td data-sort="Activo"><span class="pill pill-ok"><span class="dot"></span>Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td data-sort="Telefónica del Perú">
+                                    <div class="u-cell">
+                                        <div class="u-av" style="background: var(--mint); color: var(--teal-dd);">TP</div>
+                                        <div>
+                                            <div class="u-name">Telefónica del Perú</div>
+                                            <div class="u-mail">ID: C002</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-sort="SRV-002"><strong>SRV-002</strong></td>
+                                <td data-sort="Arica - Valparaiso">Arica - Valparaiso (ENL-002)</td>
+                                <td data-sort="50"><strong>50 Gbps</strong></td>
+                                <td data-sort="Activo"><span class="pill pill-ok"><span class="dot"></span>Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td data-sort="Entel Perú S.A.">
+                                    <div class="u-cell">
+                                        <div class="u-av" style="background: var(--yellow); color: var(--warn);">EP</div>
+                                        <div>
+                                            <div class="u-name">Entel Perú S.A.</div>
+                                            <div class="u-mail">ID: C003</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-sort="SRV-008"><strong>SRV-008</strong></td>
+                                <td data-sort="Lima - Ica">Lima - Ica (ENL-003)</td>
+                                <td data-sort="10"><strong>10 Gbps</strong></td>
+                                <td data-sort="Pendiente"><span class="pill pill-warn"><span class="dot"></span>Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td data-sort="Win Empresas S.A.">
+                                    <div class="u-cell">
+                                        <div class="u-av" style="background: var(--lilac); color: #5a4b81;">WE</div>
+                                        <div>
+                                            <div class="u-name">Win Empresas S.A.</div>
+                                            <div class="u-mail">ID: C004</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-sort="SRV-010"><strong>SRV-010</strong></td>
+                                <td data-sort="Lima - Trujillo">Lima - Trujillo (ENL-004)</td>
+                                <td data-sort="40"><strong>40 Gbps</strong></td>
+                                <td data-sort="Crítico"><span class="pill pill-crit"><span class="dot"></span>Crítico</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Paginación Interactiva -->
+                <div class="pagination" style="justify-content: flex-end;">
+                    <div style="display: flex; gap: 5px; align-items: center;">
+                        <button type="button" class="page-btn">‹</button>
+                        <button type="button" class="page-btn active">1</button>
+                        <button type="button" class="page-btn">2</button>
+                        <button type="button" class="page-btn">›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="appfoot">
+            <span>OceanLink · Centro de operaciones</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Lógica de búsqueda en tiempo real
+    const searchInput = document.getElementById('panelSearch');
+    const tableRows = document.querySelectorAll('#panelTable tbody tr');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        tableRows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
+    // Lógica de ordenamiento por columnas (Ascendente / Descendente)
+    (function(){
+      var tb = document.getElementById("panelTable"); if(!tb) return;
+      var body = tb.tBodies[0]; var keys = [];
+      function val(r,i){ return r.cells[i].getAttribute("data-sort") || r.cells[i].innerText; }
+      function paint(){
+        document.querySelectorAll("th.sortable").forEach(function(th, index){
+          var f = null;
+          for(var k=0; k<keys.length; k++){ if(keys[k].col===index){ f=keys[k]; break; } }
+          var arrowSpan = th.querySelector(".sarrow");
+          if(arrowSpan) arrowSpan.textContent = f ? (f.asc ? "▲" : "▼") : "⇅";
+        });
+      }
+      function apply(){
+        var rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function(a,b){
+          for(var k=0; k<keys.length; k++){
+            var i = keys[k].col;
+            var c = val(a,i).localeCompare(val(b,i), "es", {numeric:true});
+            if(c !== 0) return keys[k].asc ? c : -c;
+          }
+          return 0;
+        });
+        rows.forEach(function(r){ body.appendChild(r); });
+        paint();
+      }
+      document.querySelectorAll("th.sortable").forEach(function(th, index){
+        th.dataset.col = index;
+        th.addEventListener("click", function(){
+          if(keys.length && keys[0].col === index){ keys[0].asc = !keys[0].asc; }
+          else { keys = keys.filter(function(k){ return k.col !== index; }); keys.unshift({col:index, asc:true}); }
+          apply();
+        });
+      });
+    })();
+</script>
+</body>
+</html>
