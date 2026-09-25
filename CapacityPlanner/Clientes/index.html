@@ -8,11 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../Capacidad/styles.css?v=5">
-  <style>
-    /* Corrección para mantener los modales ocultos por defecto */
-    .modal-back { display: none; }
-    .modal-back.open { display: flex; }
-  </style>
 </head>
 <body>
   <div class="shell">
@@ -26,7 +21,7 @@
         </a>
         <a class="nav-item active" href="index.html">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          <span>Clientes y servicios</span>
+          <span>Servicios por cliente</span>
         </a>
         <a class="nav-item" href="../Capacidad/dashboard.html">
           <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
@@ -74,11 +69,10 @@
       <div class="content" style="flex: 1;">
         <div class="page-head">
           <div>
-            <h1>Gestión de clientes</h1>
+            <h1>Clientes</h1>
             <div class="psub">Cartera de clientes y servicios contratados.</div>
           </div>
           <div class="grow"></div>
-          <a class="btn btn-primary" href="client-register.html">+ Nuevo cliente</a>
         </div>
 
         <div class="card">
@@ -125,29 +119,16 @@
     </div>
   </div>
 
-  <!-- Modal de Confirmación -->
-  <div class="modal-back" id="confirmModal">
-    <div class="modal">
-      <h3 id="modalTitle">Desactivar cliente</h3>
-      <p id="modalDesc">¿Deseas desactivar a este cliente?</p>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeConfirmModal()">Cancelar</button>
-        <button class="btn btn-danger" id="btnConfirmAction" onclick="executeToggle()">Desactivar</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     const clientData = [
-      { id: 'C001', name: 'América Móvil Perú', ruc: '20467534012', phone: '01-710-2000', mail: 'contacto@claro.pe', status: 'Activo' },
-      { id: 'C002', name: 'Telefónica del Perú', ruc: '20100017491', phone: '01-210-1000', mail: 'redes@telefonica.pe', status: 'Activo' },
-      { id: 'C003', name: 'Entel Perú S.A.', ruc: '20106897914', phone: '01-611-1000', mail: 'soporte@entel.pe', status: 'Inactivo' },
-      { id: 'C004', name: 'Win Empresas S.A.', ruc: '20556214309', phone: '01-707-3000', mail: 'empresas@win.pe', status: 'Inactivo' }
+      { id: 'C001', name: 'América Móvil Perú', ruc: '20467534012', phone: '01-710-2000', mail: 'contacto@claro.pe', address: 'Av. Nicolás Arriola 480', contact: 'Juan Pérez (Jefe)', status: 'Activo' },
+      { id: 'C002', name: 'Telefónica del Perú', ruc: '20100017491', phone: '01-210-1000', mail: 'redes@telefonica.pe', address: 'Av. Arequipa 1155', contact: 'Ana Quispe (Gerente)', status: 'Activo' },
+      { id: 'C003', name: 'Entel Perú S.A.', ruc: '20106897914', phone: '01-611-1000', mail: 'soporte@entel.pe', address: 'Av. República de Colombia 791', contact: 'Luis Ramos (Supervisor)', status: 'Inactivo' },
+      { id: 'C004', name: 'Win Empresas S.A.', ruc: '20556214309', phone: '01-707-3000', mail: 'empresas@win.pe', address: 'Av. Javier Prado Este 560', contact: 'Rosa Díaz (Analista)', status: 'Inactivo' }
     ];
 
     let currentPage = 1;
     const rowsPerPage = 2;
-    let currentClientId = null;
 
     function renderTable() {
       const tbody = document.getElementById('tableBody');
@@ -157,16 +138,6 @@
 
       paginatedData.forEach(row => {
         const pillClass = row.status === 'Activo' ? 'pill-ok' : 'pill-crit';
-        const btnClass = row.status === 'Activo' ? '' : 'btn-primary';
-        
-        const btnStyle = row.status === 'Activo' 
-          ? 'border: 1px solid var(--line-strong); color: var(--muted); background: #fff; border-radius: 9px;' 
-          : 'border: none; background: var(--teal); color: #fff; border-radius: 9px; box-shadow: 0 8px 18px rgba(11,154,161,.20);';
-        
-        const btnTitle = row.status === 'Activo' ? 'Desactivar' : 'Activar';
-        const btnIcon = row.status === 'Activo' 
-          ? '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
-          : '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
 
         tbody.innerHTML += `
           <tr>
@@ -181,9 +152,6 @@
                 <a href="client-detail.html" class="btn-icon" style="border: 1px solid var(--line-strong); color: var(--muted); background: #fff; border-radius: 9px;" title="Ver detalle">
                   <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 </a>
-                <button class="btn-icon ${btnClass}" style="${btnStyle}" title="${btnTitle}" onclick="openConfirmModal('${row.id}', '${row.status}', '${row.name}')">
-                  ${btnIcon}
-                </button>
               </div>
             </td>
           </tr>
@@ -193,40 +161,6 @@
       const totalPages = Math.ceil(clientData.length / rowsPerPage);
       document.getElementById('btnPrev').disabled = currentPage === 1;
       document.getElementById('btnNext').disabled = currentPage === totalPages;
-    }
-
-    function openConfirmModal(id, status, name) {
-      currentClientId = id;
-      const isActivo = status === 'Activo';
-      
-      document.getElementById('modalTitle').innerText = isActivo ? 'Desactivar cliente' : 'Activar cliente';
-      document.getElementById('modalDesc').innerHTML = `¿Deseas ${isActivo ? 'desactivar' : 'activar'} a <b>${name}</b>?`;
-      
-      const btnConfirm = document.getElementById('btnConfirmAction');
-      btnConfirm.innerText = isActivo ? 'Desactivar' : 'Activar';
-      btnConfirm.className = isActivo ? 'btn btn-danger' : 'btn btn-primary';
-      
-      document.getElementById('confirmModal').classList.add('open');
-    }
-
-    function closeConfirmModal() {
-      document.getElementById('confirmModal').classList.remove('open');
-      currentClientId = null;
-    }
-
-    function executeToggle() {
-      if (currentClientId) {
-        toggleStatus(currentClientId);
-        closeConfirmModal();
-      }
-    }
-
-    function toggleStatus(id) {
-      const client = clientData.find(c => c.id === id);
-      if (client) {
-        client.status = client.status === 'Activo' ? 'Inactivo' : 'Activo';
-        renderTable();
-      }
     }
 
     function changePage(direction) {

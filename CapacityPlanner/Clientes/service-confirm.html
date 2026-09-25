@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirmar Servicio · OceanLink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Capacidad/styles.css?v=5">
+</head>
+<body>
+  <div class="shell">
+    <aside class="side">
+      <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+      <nav class="nav-sec">
+        <div class="nav-label">Módulos</div>
+        <a class="nav-item" href="../panel.html">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span>Panel General</span>
+        </a>
+        <a class="nav-item active" href="index.html">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span>Gestión de servicios</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/dashboard.html">
+          <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
+          <span>Capacidad</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/solicitudes.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Solicitudes</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/alertas.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>Alertas de Red</span>
+        </a>
+        <a class="nav-item" href="../Capacidad/historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Histórico</span>
+        </a>
+      </nav>
+      <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Capacity Planner</div></div></div>
+    </aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="crumb">OceanLink / Capacity Planner</div>
+        <div class="grow"></div>
+        <div class="userpill" tabindex="0">
+            <div class="avatar">GG</div>
+            <div class="uinfo">
+                <div class="un">Gerson Garcia</div>
+                <div class="ur">Capacity Planner</div>
+            </div>
+            <span class="ucaret">▾</span>
+            <div class="usermenu">
+                <a href="editar-perfil.html">Editar perfil</a>
+                <a href="login.html">Cerrar sesión</a>
+            </div>
+        </div>
+      </div>
+
+      <div class="content" style="flex: 1;">
+        <div class="page-head confirm-wrap">
+          <div>
+            <h1>Confirmar asignación de servicio</h1>
+            <div class="psub">Revisa la ruta y la capacidad antes de reservarla para el cliente.</div>
+          </div>
+        </div>
+
+        <div class="card card-pad confirm-wrap">
+            <div class="confirm-error-banner" id="errorBanner" style="display:none;">
+              <div class="ii">!</div>
+              <div>Hay campos obligatorios sin completar. Vuelve a editar el formulario antes de confirmar.</div>
+            </div>
+
+            <div class="info-strip">
+              <div class="ii">i</div>
+              <div>
+                <div class="it" id="cfCliente">—</div>
+                <div class="id" id="cfRuta">— → —</div>
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <div class="summary-row" id="fieldCliente"><span>Cliente titular (*)</span><strong id="rowCliente">—</strong></div>
+              <div class="summary-row" id="fieldRutaNombre"><span>Ruta / Enlace (*)</span><strong id="rowRutaNombre">—</strong></div>
+              <div class="summary-row" id="fieldOrigen"><span>Estación Origen</span><strong id="rowOrigen">—</strong></div>
+              <div class="summary-row" id="fieldDestino"><span>Estación Destino</span><strong id="rowDestino">—</strong></div>
+              <div class="summary-row" id="fieldFecha"><span>Fecha de activación</span><strong id="rowFecha">—</strong></div>
+              <div class="summary-row" id="fieldSegmentos"><span>Segmentos de la ruta (*)</span><strong id="rowSegmentos">—</strong></div>
+            </div>
+
+            <div class="form-actions" style="justify-content: flex-end;">
+                <a href="service-register.html" class="btn btn-outline" id="btnVolver">Volver a editar</a>
+                <a href="service-success.html" class="btn btn-primary" id="btnConfirmar">Confirmar y guardar</a>
+            </div>
+        </div>
+      </div>
+
+      <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const vacio = v => v && v.trim() ? v.trim() : '—';
+
+    const cliente = vacio(params.get('cliente'));
+    const rutaNombre = vacio(params.get('ruta'));
+    const origen  = vacio(params.get('origen'));
+    const destino = vacio(params.get('destino'));
+    const fechaRaw = params.get('fechaActivacion');
+    const fecha   = fechaRaw ? new Date(fechaRaw + 'T00:00:00').toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' }) : '—';
+    const segsRaw = params.get('segmentos') || '';
+    const segmentos = segsRaw ? segsRaw.split('|').filter(Boolean) : [];
+
+    document.getElementById('cfCliente').textContent = cliente;
+    document.getElementById('cfRuta').textContent     = origen + ' → ' + destino;
+    document.getElementById('rowCliente').textContent = cliente;
+    document.getElementById('rowRutaNombre').textContent = rutaNombre;
+    document.getElementById('rowOrigen').textContent  = origen;
+    document.getElementById('rowDestino').textContent = destino;
+    document.getElementById('rowFecha').textContent   = fecha;
+
+    const $segs = document.getElementById('rowSegmentos');
+    $segs.innerHTML = '';
+    $segs.style.textAlign = 'right';
+    if (segmentos.length === 0) {
+      $segs.textContent = '—';
+    } else {
+      segmentos.forEach(s => {
+        const div = document.createElement('div');
+        div.textContent = s;
+        $segs.appendChild(div);
+      });
+    }
+
+    // Validación independiente: el paso de confirmación NO confía ciegamente en el
+    // formulario anterior. Si algún campo obligatorio llega vacío, se bloquea el
+    // botón "Confirmar y guardar" hasta que se corrija en el formulario.
+    const requeridos = [
+      { valor: cliente,                                   fila: 'fieldCliente' },
+      { valor: rutaNombre,                                 fila: 'fieldRutaNombre' },
+      { valor: segmentos.length ? 'ok' : '—',              fila: 'fieldSegmentos' }
+    ];
+    let hayVacios = false;
+    requeridos.forEach(f => {
+      if (f.valor === '—') {
+        hayVacios = true;
+        document.getElementById(f.fila).classList.add('row-error');
+      }
+    });
+
+    const btnConfirmar = document.getElementById('btnConfirmar');
+    if (hayVacios) {
+      document.getElementById('errorBanner').style.display = 'flex';
+      btnConfirmar.classList.add('btn-disabled');
+      btnConfirmar.removeAttribute('href');
+      btnConfirmar.setAttribute('aria-disabled', 'true');
+    } else {
+      // Si el usuario vuelve a editar, no se pierden los datos ya ingresados
+      document.getElementById('btnVolver').href = 'service-register.html?' + params.toString();
+      // Se llevan los datos clave a la pantalla de éxito para personalizar el mensaje
+      btnConfirmar.href = 'service-success.html?cliente=' + encodeURIComponent(cliente)
+        + '&origen=' + encodeURIComponent(origen) + '&destino=' + encodeURIComponent(destino);
+    }
+  </script>
+</body>
+</html>

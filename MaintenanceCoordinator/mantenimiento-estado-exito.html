@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estado Modificado · OceanLink</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+<aside class="side">
+  <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+  <nav class="nav-sec">
+    <div class="nav-label">Módulos</div>
+    <a class="nav-item active" href="mantenimientos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Mantenimientos</span></a>
+    <a class="nav-item" href="mantenimientos-historial.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span>Histórico</span></a>
+  </nav>
+  <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot" style="background:#e3aa59"></span>Maintenance Coord.</div></div></div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <div class="crumb">OceanLink / Maintenance Coordinator</div><div class="grow"></div>
+    <div class="userpill" tabindex="0"><div class="avatar">GG</div><div class="uinfo"><div class="un">Gerson Garcia</div></div></div>
+  </div>
+  
+  <div class="content">
+    <div class="card center-state" style="margin: auto; max-width: 500px;">
+      <div class="cs-ic" style="border-color:#8dcac3;color:var(--teal)">✓</div>
+      <h2>Estado Modificado Correctamente</h2>
+      <p>El estado del mantenimiento MNT-089 ha sido actualizado a "En Curso" y la justificación técnica fue registrada en la bitácora exitosamente.</p>
+      
+      <!-- Este botón retorna a la vista de detalles enviando un parámetro en la URL para simular la actualización visual del estado -->
+      <a class="btn btn-primary" style="margin-top: 10px;" href="mantenimiento-detalle.html?estadoActualizado=true">Volver a los Detalles</a>
+    </div>
+  </div>
+  
+  <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+</div>
+</div>
+</body>
+</html>

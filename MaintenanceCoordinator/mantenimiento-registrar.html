@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrar Mantenimiento · OceanLink</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+    <nav class="nav-sec">
+      <div class="nav-label">Módulos</div>
+      <a class="nav-item active" href="mantenimientos.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Mantenimientos</span>
+      </a>
+      <a class="nav-item" href="mantenimientos-historial.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span>Histórico (RF31)</span>
+      </a>
+    </nav>
+    <div class="side-foot">
+      <div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot" style="background:#e3aa59"></span>Maintenance Coord.</div></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="crumb">OceanLink / Maintenance Coordinator</div><div class="grow"></div>
+      <div class="userpill" tabindex="0"><div class="avatar">GG</div><div class="uinfo"><div class="un">Gerson Garcia</div></div></div>
+    </div>
+
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1>Registrar Mantenimiento (RF24)</h1>
+          <div class="psub">Planifica una intervención y vincúlala a incidencias si es necesario.</div>
+        </div>
+      </div>
+
+      <div class="card card-pad" style="max-width: 650px;">
+        <form action="mantenimientos.html">
+          <div class="field">
+            <label>Tipo de Mantenimiento (*)</label>
+            <select class="input" id="tipoMantenimiento" onchange="toggleIncidencia()" required>
+              <option value="Preventivo" selected>Preventivo (Rutina Programada)</option>
+              <option value="Correctivo">Correctivo (Resolución de Incidencia N.O.)</option>
+            </select>
+          </div>
+
+          <!-- Este campo se muestra solo si es Correctivo -->
+          <div class="field" id="campoIncidencia" style="display:none; background: var(--surface-2); padding: 15px; border-radius: 11px; border: 1px dashed var(--line-strong);">
+            <label>Vincular a Incidencia del Network Operator (*)</label>
+            <select class="input">
+              <option value="" disabled selected>Seleccione el ticket reportado...</option>
+              <option>INC-2026-0181 — Pérdida de señal en par 4</option>
+              <option>INC-2026-0184 — Corte total en enlace CLL–ATF</option>
+            </select>
+            <div class="hint">Al registrar la finalización (RF30), se habilitará la restauración en el panel del N.O.</div>
+          </div>
+
+          <div class="field">
+            <label>Título de la intervención (*)</label>
+            <input type="text" class="input" placeholder="Ej. Cambio de amplificador óptico" required>
+          </div>
+
+          <div class="field">
+            <label>Seleccionar Infraestructura (RF25) (*)</label>
+            <select class="input" required>
+              <option value="" disabled selected>Selecciona el cable o estación...</option>
+              <option>SEG-01: Cable Submarino Lurín ↔ Arica</option>
+              <option>SEG-02: Cable Submarino Arica ↔ Valparaíso</option>
+              <option>LS-04: Landing Station Valparaíso</option>
+            </select>
+          </div>
+
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="field">
+              <label>Fecha y Hora de Inicio (RF26) (*)</label>
+              <input type="datetime-local" class="input" required>
+            </div>
+            <div class="field">
+              <label>Duración Estimada (RF26) (*)</label>
+              <select class="input" required>
+                <option value="1">1 hora</option>
+                <option value="2">2 horas</option>
+                <option value="4">4 horas</option>
+                <option value="8">8 horas</option>
+                <option value="24">24 horas</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Descripción técnica</label>
+            <textarea class="input" rows="3" placeholder="Detalla los trabajos a realizar..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <a class="btn btn-outline" href="mantenimientos.html">Cancelar</a>
+            <button class="btn btn-primary" type="submit" onclick="alert('Mantenimiento Registrado Exitosamente')">Guardar Mantenimiento</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+  </div>
+</div>
+
+<script>
+  function toggleIncidencia() {
+    const tipo = document.getElementById('tipoMantenimiento').value;
+    const campo = document.getElementById('campoIncidencia');
+    if(tipo === 'Correctivo') {
+        campo.style.display = 'block';
+    } else {
+        campo.style.display = 'none';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OceanLink · Editar mi usuario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="profile-edit-page">
+<main class="profile-edit-main">
+  <header class="topbar profile-edit-topbar">
+    <div class="crumb">OceanLink / Network Operator</div>
+  </header>
+
+  <section class="profile-edit-content">
+    <div class="profile-edit-head">
+      <div>
+        <p class="eyebrow">CUENTA</p>
+        <h1>Editar mi usuario</h1>
+        <div class="psub">Actualiza los datos de tu cuenta.</div>
+      </div>
+    </div>
+
+    <section class="profile-edit-card">
+      <form action="incidencias.html" method="get" class="profile-edit-form">
+        <div class="profile-edit-left">
+          <label class="field-label">Nombre completo <span class="required-mark">*</span>
+            <input class="input" type="text" value="Gerson García" required><span class="validation-message">Este campo es obligatorio.</span>
+          </label>
+
+          <label class="field-label">Correo electrónico <span class="required-mark">*</span>
+            <input class="input" type="email" value="g.garcia@oceanlink.pe" required><span class="validation-message">Este campo es obligatorio.</span>
+          </label>
+
+          <div class="field-label">Mi contraseña actual <span class="required-mark">*</span>
+            <div class="password-field">
+              <input class="password-input input" id="current-password" type="password" value="12345678" aria-label="Mi contraseña actual" required><span class="validation-message">Este campo es obligatorio.</span>
+            </div>
+          </div>
+
+          <div class="field-label">Contraseña nueva
+            <div class="password-field">
+              <input class="password-input input" id="new-password" type="password" placeholder="Ingresa una nueva contraseña" aria-label="Ingresa una nueva contraseña">
+            </div>
+          </div>
+
+          <div class="field-label">Confirmar contraseña
+            <div class="password-field">
+              <input class="password-input input" id="confirm-password" type="password" placeholder="Repite la nueva contraseña" aria-label="Repite la nueva contraseña">
+            </div>
+          </div>
+
+          <label class="field-label">Cambio de rol
+            <input class="input" type="text" value="Network Operator" disabled>
+          </label>
+
+          <div class="profile-edit-divider"></div>
+          <div class="profile-edit-actions">
+            <a class="btn btn-outline" href="incidencias.html">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Aceptar</button>
+          </div>
+        </div>
+
+        <div class="profile-edit-image">
+          <div class="profile-photo-placeholder"><span>GG</span></div>
+          <div class="profile-image-actions">
+            <button class="btn btn-primary" type="button">Editar imagen</button>
+            <button class="btn btn-outline" type="button">Quitar</button>
+          </div>
+          <p>Foto de perfil del usuario. Formato JPG o<br>PNG, imagen cuadrada recomendada.</p>
+        </div>
+      </form>
+    </section>
+  </section>
+
+  <footer class="appfoot profile-edit-footer"><span>OceanLink · Centro de operaciones</span></footer>
+</main>
+
+</body>
+</html>

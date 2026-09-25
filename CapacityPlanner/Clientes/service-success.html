@@ -61,7 +61,7 @@
         <div class="card center-state" style="margin: auto; max-width: 500px;">
           <div class="cs-ic" style="border-color: #55b6a8; color: var(--teal); font-weight: bold;">✓</div>
           <h2>El servicio se guardó correctamente</h2>
-          <p>La ruta de fibra óptica y la capacidad han sido reservadas exitosamente para el cliente.</p>
+          <p id="successMsg">La ruta de fibra óptica y la capacidad han sido reservadas exitosamente para el cliente.</p>
           <a href="client-detail.html" class="btn btn-primary" style="margin-top: 10px;">Aceptar</a>
         </div>
       </div>
@@ -69,5 +69,16 @@
       <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
     </div>
   </div>
+
+  <script>
+    const params  = new URLSearchParams(window.location.search);
+    const cliente = params.get('cliente');
+    const origen  = params.get('origen');
+    const destino = params.get('destino');
+    if (cliente && origen && destino) {
+      document.getElementById('successMsg').textContent =
+        'La ruta ' + origen + ' → ' + destino + ' quedó reservada exitosamente para ' + cliente + '.';
+    }
+  </script>
 </body>
 </html>

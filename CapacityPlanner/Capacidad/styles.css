@@ -204,6 +204,25 @@ th.sortable:hover .sarrow{color:var(--teal-dd)}
 .slabel{font-size:12px;font-weight:800;margin:8px 0 10px}
 
 /* states & modals */
+/* ============================================================
+   DOBLE CONFIRMACIÓN (registro/actualización con paso intermedio)
+   ============================================================ */
+.confirm-wrap{max-width:640px}
+.confirm-wrap .page-head h1{margin-bottom:2px}
+.summary-box{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:4px}
+.summary-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--line)}
+.summary-row:last-child{border-bottom:none}
+.summary-row span{font-size:11px;color:var(--muted);font-weight:600}
+.summary-row strong{font-size:12.5px;font-weight:800;color:var(--ink);text-align:right}
+.summary-row.row-error{background:var(--danger-soft)}
+.summary-row.row-error strong{color:var(--danger)}
+.confirm-error-banner{display:flex;align-items:flex-start;gap:10px;background:var(--danger-soft);color:var(--danger);
+  border-radius:12px;padding:13px 15px;margin-bottom:15px;font-size:11.5px;font-weight:700;line-height:1.5}
+.confirm-error-banner .ii{width:20px;height:20px;border-radius:50%;background:#fff;color:var(--danger);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:none}
+.btn[disabled],.btn.btn-disabled{opacity:.45;pointer-events:none;cursor:not-allowed;box-shadow:none}
+.confirm-icon-lg{width:56px;height:56px;border-radius:50%;background:var(--aqua);color:var(--teal-d);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin-bottom:14px}
 .center-state{display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 24px;gap:8px}
 .center-state .cs-ic{width:74px;height:74px;border-radius:50%;background:#fff;border:2px solid #d97686;color:var(--danger);
   display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:12px}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clientes · OceanLink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* el modal permanece oculto hasta abrirse */
+.modal-back{display:none}
+.modal-back.open{display:flex}
+</style>
+</head>
+<body>
+<div class="shell"><aside class="side"><div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="Ocean Link Logistics"></div><nav class="nav-sec"><div class="nav-label">Módulos</div><a class="nav-item" href="panel.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Panel</span></a><a class="nav-item" href="usuarios.html"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 6.2a3 3 0 0 1 0 5.6M17.5 19a5 5 0 0 0-2.5-4.3"/></svg><span>Usuarios</span></a><a class="nav-item active" href="clientes.html"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg><span>Clientes</span></a><a class="nav-item" href="landing-stations.html"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6.7 7.3 11 16m6.3-8.7L13 16"/></svg><span>Landing Stations</span></a><a class="nav-item" href="redes-submarinas.html"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span>Redes submarinas</span></a><a class="nav-item" href="acceso-por-rol.html"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Acceso por rol</span></a></nav><div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot"></span>Administrador</div></div></div></aside><div class="main"><div class="topbar"><div class="crumb">OceanLink / Administrador</div><div class="grow"></div><div class="userpill" tabindex="0"><div class="avatar">AA</div><div class="uinfo"><div class="un">Adrian Angles</div><div class="ur">Administrador</div></div><span class="ucaret">▾</span><div class="usermenu"><a href="editar-usuario.html">Editar perfil</a><a href="sesion-cerrada.html">Cerrar sesión</a></div></div></div><div class="content"><div class="page-head"><div><h1>Gestión de clientes</h1><div class="psub">Cartera de clientes.</div></div><div class="grow"></div><a class="btn btn-primary" href="client-register.html">+ Nuevo cliente</a></div><div class="card"><div class="card-pad table-toolbar"><div class="usearch-box table-search"><span class="usearch-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><input id="csearch" placeholder="Buscar por RUC o Razón Social…"></div></div><div class="table-wrap"><table id="ctable"><thead><tr><th class="sortable" data-col="0">ID <span class="sarrow">⇅</span></th><th class="sortable" data-col="1">Razón Social <span class="sarrow">⇅</span></th><th class="sortable" data-col="2">RUC <span class="sarrow">⇅</span></th><th class="sortable" data-col="3">Teléfono <span class="sarrow">⇅</span></th><th class="sortable" data-col="4">Correo <span class="sarrow">⇅</span></th><th class="sortable" data-col="5">Estado <span class="sarrow">⇅</span></th><th>Acciones</th></tr></thead><tbody id="cbody"></tbody></table></div><div class="pagination"><button class="page-btn" id="cprev" onclick="cChangePage(-1)">‹</button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><span class="page-ellipsis">…</span><button class="page-btn">15</button><button class="page-btn" id="cnext" onclick="cChangePage(1)">›</button></div></div></div><div class="appfoot"><span>OceanLink · Centro de operaciones</span></div></div></div>
+
+<!-- Modal de confirmación: activar / desactivar cliente -->
+<div class="modal-back" id="confirmModal"><div class="modal"><h3 id="modalTitle">Desactivar cliente</h3><p id="modalDesc">¿Deseas desactivar a este cliente?</p><div class="form-actions"><button class="btn btn-outline" onclick="closeConfirmModal()">Cancelar</button><button class="btn btn-danger" id="btnConfirmAction" onclick="executeToggle()">Desactivar</button></div></div></div>
+
+<script>
+var clientData=[
+  {id:"C001",name:"América Móvil Perú",ruc:"20467534012",phone:"01-710-2000",mail:"contacto@claro.pe",address:"Av. Nicolás Arriola 480",contact:"Juan Pérez (Jefe)",status:"Activo"},
+  {id:"C002",name:"Telefónica del Perú",ruc:"20100017491",phone:"01-210-1000",mail:"redes@telefonica.pe",address:"Av. Arequipa 1155",contact:"Ana Quispe (Gerente)",status:"Activo"},
+  {id:"C003",name:"Entel Perú S.A.",ruc:"20106897914",phone:"01-611-1000",mail:"soporte@entel.pe",address:"Av. República de Colombia 791",contact:"Luis Ramos (Supervisor)",status:"Inactivo"},
+  {id:"C004",name:"Win Empresas S.A.",ruc:"20556214309",phone:"01-707-3000",mail:"empresas@win.pe",address:"Av. Javier Prado Este 560",contact:"Rosa Díaz (Analista)",status:"Inactivo"}
+];
+var ICON_EDIT='<svg viewBox="0 0 24 24"><path d="M4 20h4L19 9a2 2 0 0 0 0-2.8l-1.2-1.2a2 2 0 0 0-2.8 0L4 16z"/><path d="M13.5 6.5l4 4"/></svg>';
+var ICON_X='<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+var ICON_CHECK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+
+var cPage=1, cRows=2, cCurrentId=null;
+
+function cRender(){
+  var body=document.getElementById("cbody"); body.innerHTML="";
+  var start=(cPage-1)*cRows;
+  clientData.slice(start,start+cRows).forEach(function(row){
+    var active=row.status==="Activo";
+    var pill=active?"pill-ok":"pill-warn";
+    var toggleCls=active?"btn-outline":"btn-primary";
+    var toggleTitle=active?"Desactivar":"Activar";
+    var toggleIcon=active?ICON_X:ICON_CHECK;
+    var editHref="client-edit.html?"+new URLSearchParams({id:row.id,razonSocial:row.name,ruc:row.ruc,telefono:row.phone,correo:row.mail,direccion:row.address,contacto:row.contact}).toString();
+    var tr=document.createElement("tr");
+    tr.innerHTML=
+      '<td data-sort="'+row.id+'"><strong>'+row.id+'</strong></td>'+
+      '<td data-sort="'+row.name+'"><div class="u-name">'+row.name+'</div></td>'+
+      '<td data-sort="'+row.ruc+'">'+row.ruc+'</td>'+
+      '<td data-sort="'+row.phone+'">'+row.phone+'</td>'+
+      '<td data-sort="'+row.mail+'">'+row.mail+'</td>'+
+      '<td data-sort="'+row.status+'"><span class="pill '+pill+'"><span class="dot"></span>'+row.status+'</span></td>'+
+      '<td><div class="actions">'+
+        '<a class="btn btn-outline btn-icon" title="Editar cliente" href="'+editHref+'">'+ICON_EDIT+'</a>'+
+        '<button class="btn '+toggleCls+' btn-icon" title="'+toggleTitle+'" onclick="openConfirmModal(\''+row.id+'\')">'+toggleIcon+'</button>'+
+      '</div></td>';
+    body.appendChild(tr);
+  });
+  var totalPages=Math.ceil(clientData.length/cRows);
+  document.getElementById("cprev").disabled=cPage===1;
+  document.getElementById("cnext").disabled=cPage===totalPages;
+}
+
+function openConfirmModal(id){
+  cCurrentId=id;
+  var c=clientData.find(function(x){return x.id===id;});
+  var active=c.status==="Activo";
+  document.getElementById("modalTitle").innerText=active?"Desactivar cliente":"Activar cliente";
+  document.getElementById("modalDesc").innerHTML="¿Deseas "+(active?"desactivar":"activar")+" a <b>"+c.name+"</b>?";
+  var b=document.getElementById("btnConfirmAction");
+  b.innerText=active?"Desactivar":"Activar";
+  b.className=active?"btn btn-danger":"btn btn-primary";
+  document.getElementById("confirmModal").classList.add("open");
+}
+function closeConfirmModal(){document.getElementById("confirmModal").classList.remove("open");cCurrentId=null;}
+function executeToggle(){
+  if(cCurrentId){
+    var c=clientData.find(function(x){return x.id===cCurrentId;});
+    if(c){c.status=c.status==="Activo"?"Inactivo":"Activo";}
+    cRender();
+  }
+  closeConfirmModal();
+}
+function cChangePage(d){
+  var totalPages=Math.ceil(clientData.length/cRows);
+  cPage=Math.min(Math.max(1,cPage+d),totalPages);
+  cRender();
+}
+document.getElementById("confirmModal").addEventListener("click",function(e){if(e.target===this)closeConfirmModal();});
+
+cRender();
+
+/* orden por columnas + búsqueda (mismo comportamiento que Usuarios) */
+(function(){
+  var tb=document.getElementById("ctable"); if(!tb) return;
+  var body=tb.tBodies[0]; var keys=[];
+  function val(r,i){return r.cells[i].getAttribute("data-sort")||r.cells[i].innerText;}
+  function paint(){document.querySelectorAll("th.sortable").forEach(function(th){var i=+th.dataset.col,f=null;for(var k=0;k<keys.length;k++){if(keys[k].col===i){f=keys[k];break;}}th.querySelector(".sarrow").textContent=f?(f.asc?"\u25B2":"\u25BC"):"\u21C5";});}
+  function apply(){var rows=Array.prototype.slice.call(body.rows);rows.sort(function(a,b){for(var k=0;k<keys.length;k++){var i=keys[k].col;var c=val(a,i).localeCompare(val(b,i),"es",{numeric:true});if(c!==0)return keys[k].asc?c:-c;}return 0;});rows.forEach(function(r){body.appendChild(r);});paint();}
+  document.querySelectorAll("th.sortable").forEach(function(th){th.addEventListener("click",function(){var i=+th.dataset.col;if(keys.length&&keys[0].col===i){keys[0].asc=!keys[0].asc;}else{keys=keys.filter(function(k){return k.col!==i;});keys.unshift({col:i,asc:true});}apply();});});
+  var s=document.getElementById("csearch");
+  if(s){s.addEventListener("input",function(){var q=s.value.toLowerCase();Array.prototype.forEach.call(body.rows,function(r){r.style.display=r.innerText.toLowerCase().indexOf(q)>=0?"":"none";});});}
+})();
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@
         </a>
         <a class="nav-item active" href="index.html">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          <span>Clientes y servicios</span>
+          <span>Servicios por cliente</span>
         </a>
         <a class="nav-item" href="../Capacidad/dashboard.html">
           <svg viewBox="0 0 24 24"><path d="M3 15a9 9 0 0 1 18 0"/></svg>
@@ -65,59 +65,64 @@
         <div class="page-head">
           <div>
             <h1>Registrar nuevo servicio</h1>
-            <div class="psub">Asigna cliente, registra fecha de activación y selecciona los tramos submarinos de la ruta.</div>
+            <div class="psub">Asigna la ruta comercial al cliente y verifica la topología física subyacente.</div>
           </div>
         </div>
 
         <div class="card card-pad" style="max-width: 720px;">
           <form id="serviceForm" novalidate>
+            
             <div class="field">
               <label>Cliente titular (*)</label>
-              <input type="text" class="input" value="América Móvil Perú S.A.C." readonly style="background: var(--mint);">
+              <input type="text" class="input" id="cliente" value="América Móvil Perú S.A.C." readonly style="background: var(--surface-2); color: var(--muted); border-style: dashed;">
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 16px;">
+            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
               <div class="field" style="margin-bottom: 0;">
-                <label>Estación Origen (*)</label>
-                <input type="text" class="input" id="origen" required>
-                <div class="err" id="err-origen" style="display:none;">Este campo es obligatorio.</div>
+                <label>Ruta Extremo a Extremo (*)</label>
+                <select class="input" id="ruta" onchange="cargarSegmentos()" required>
+                  <option value="" disabled selected>Selecciona la ruta solicitada...</option>
+                  <option value="R-001" data-origen="Lurín" data-destino="Arica">Lurín -&gt; Arica (Directo)</option>
+                  <option value="R-002" data-origen="Lurín" data-destino="Valparaíso">Lurín -&gt; Valparaíso (Escala en Arica)</option>
+                  <option value="R-004" data-origen="Lurín" data-destino="Manta">Lurín -&gt; Manta (Simular Falla)</option>
+                </select>
+                <div class="err" id="err-ruta" style="display:none;">Debes seleccionar una ruta comercial.</div>
               </div>
 
+              <!-- CAMPO ACTUALIZADO: Obligatorio y con mensaje de error -->
               <div class="field" style="margin-bottom: 0;">
-                <label>Estación Destino (*)</label>
-                <input type="text" class="input" id="destino" required>
-                <div class="err" id="err-destino" style="display:none;">Este campo es obligatorio.</div>
+                <label>Fecha de activación programada (*)</label>
+                <input type="date" class="input" id="fechaActivacion" required>
+                <div class="err" id="err-fecha" style="display:none;">Debes seleccionar la fecha de activación programada</div>
               </div>
             </div>
 
-            <div class="field" style="max-width: 280px; margin: 0 auto 24px auto;">
-              <label>Fecha de activación</label>
-              <input type="date" class="input" id="fechaActivacion">
+            <div class="slabel" style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px;">Topología Física Involucrada</div>
+            <div class="hint" style="margin-bottom: 12px;">Los siguientes segmentos de fibra óptica componen la ruta seleccionada:</div>
+
+            <div id="alertaRespaldo" style="display: none; background: var(--danger-soft); border: 1px solid var(--danger); padding: 15px; border-radius: 11px; margin-bottom: 15px;">
+                <div style="color: var(--danger); font-size: 12px; font-weight: 800; margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-bottom; margin-right: 4px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Alerta de Enrutamiento: Un segmento principal está fuera de servicio.
+                </div>
+                <label style="font-size: 11px; font-weight: 600; color: var(--danger); display: block; margin-bottom: 5px;">Ruta de respaldo automática:</label>
+                <select class="input" id="selectRespaldo" onchange="aplicarRespaldo()" style="border-color: var(--danger); color: var(--danger); font-weight: 600;">
+                    <option value="" disabled selected>-- Elige un desvío alternativo --</option>
+                </select>
+                <div class="err" id="err-respaldo" style="display:none; color: var(--danger);">Debes seleccionar un desvío para poder guardar el servicio.</div>
             </div>
 
-            <div class="slabel" style="margin-top: 20px;">Asignación de ruta (Segmentos de fibra)</div>
-            <div class="hint" style="margin-bottom: 12px;">Selecciona los segmentos que componen la ruta del enlace:</div>
-
-            <div class="radio-list">
-              <label class="radio sel">
-                <input type="checkbox" checked style="accent-color: var(--teal);">
-                [X] SEG-01: Lurín &lt;-&gt; Arica | Disp: 180 Gbps | Estado: Operativo
-              </label>
-              <label class="radio sel">
-                <input type="checkbox" checked style="accent-color: var(--teal);">
-                [X] SEG-02: Arica &lt;-&gt; Valparaíso | Disp: 90 Gbps | Estado: Operativo
-              </label>
-              <label class="radio">
-                <input type="checkbox" style="accent-color: var(--teal);">
-                [ ] SEG-03: Lurín &lt;-&gt; Manta | Disp: 0 Gbps | Estado: Fuera de servicio
-              </label>
+            <div id="segmentList" style="display: flex; flex-direction: column; gap: 8px; min-height: 60px;">
+                <div style="padding: 20px; text-align: center; background: var(--surface-2); border-radius: 11px; border: 1px dashed var(--line-strong); font-size: 11.5px; color: var(--muted);">
+                    Selecciona una ruta arriba para visualizar los enlaces físicos.
+                </div>
             </div>
 
-            <div class="hint" style="margin-top: 18px;">Campos obligatorios (*)</div>
+            <div class="hint" style="margin-top: 24px;">Campos obligatorios (*)</div>
 
             <div class="form-actions" style="justify-content: flex-end; margin-top: 10px;">
-              <a href="client-detail.html" class="btn btn-outline">Cancelar</a>
-              <button type="button" class="btn btn-primary" onclick="validateService()">Guardar servicio</button>
+              <a href="index.html" class="btn btn-outline">Cancelar</a>
+              <button type="button" class="btn btn-primary" onclick="validateService()">Validar y Continuar</button>
             </div>
           </form>
         </div>
@@ -128,23 +133,155 @@
   </div>
 
   <script>
+    const dbRutas = {
+        "R-001": {
+            tramos: [ { id: "SEG-01", desc: "Lurín <-> Arica", estado: "Operativo", color: "ok" } ],
+            requiereRespaldo: false
+        },
+        "R-002": {
+            tramos: [
+                { id: "SEG-01", desc: "Lurín <-> Arica", estado: "Operativo", color: "ok" },
+                { id: "SEG-02", desc: "Arica <-> Valparaíso", estado: "Alerta Capacidad", color: "warn" }
+            ],
+            requiereRespaldo: false
+        },
+        "R-004": {
+            tramos: [
+                { id: "SEG-08", desc: "Lurín <-> Máncora", estado: "Operativo", color: "ok" },
+                { id: "SEG-09", desc: "Máncora <-> Manta", estado: "Corte de Fibra (Fuera de Servicio)", color: "crit" }
+            ],
+            requiereRespaldo: true,
+            respaldos: [
+                {
+                    idRespaldo: "RESP-01",
+                    nombre: "Desvío por Guayaquil (Latencia +15ms)",
+                    tramosNuevos: [
+                        { id: "SEG-08", desc: "Lurín <-> Máncora", estado: "Operativo", color: "ok" },
+                        { id: "SEG-10", desc: "Máncora <-> Guayaquil", estado: "Operativo", color: "ok" },
+                        { id: "SEG-11", desc: "Guayaquil <-> Manta", estado: "Operativo", color: "ok" }
+                    ]
+                }
+            ]
+        }
+    };
+
+    let segmentosActuales = [];
+
+    function cargarSegmentos() {
+        const rutaId = document.getElementById('ruta').value;
+        const alerta = document.getElementById('alertaRespaldo');
+        const selectRespaldo = document.getElementById('selectRespaldo');
+
+        alerta.style.display = 'none';
+
+        if (!rutaId || !dbRutas[rutaId]) return;
+
+        const rutaInfo = dbRutas[rutaId];
+        segmentosActuales = [...rutaInfo.tramos]; 
+        
+        if (rutaInfo.requiereRespaldo) {
+            alerta.style.display = 'block';
+            selectRespaldo.innerHTML = '<option value="" disabled selected>-- Elige un desvío alternativo --</option>';
+            rutaInfo.respaldos.forEach(r => {
+                selectRespaldo.innerHTML += `<option value="${r.idRespaldo}">${r.nombre}</option>`;
+            });
+            document.getElementById('err-respaldo').style.display = 'none';
+        }
+
+        renderizarLista(segmentosActuales);
+    }
+
+    function aplicarRespaldo() {
+        const rutaId = document.getElementById('ruta').value;
+        const respaldoId = document.getElementById('selectRespaldo').value;
+        const rutaInfo = dbRutas[rutaId];
+        
+        const respaldo = rutaInfo.respaldos.find(r => r.idRespaldo === respaldoId);
+        if(respaldo) {
+            segmentosActuales = [...respaldo.tramosNuevos];
+            renderizarLista(segmentosActuales);
+            document.getElementById('err-respaldo').style.display = 'none';
+        }
+    }
+
+    function renderizarLista(lista) {
+        const contenedor = document.getElementById('segmentList');
+        contenedor.innerHTML = '';
+        
+        lista.forEach(seg => {
+            const bgClass = seg.color === 'ok' ? 'var(--mint)' : (seg.color === 'warn' ? 'var(--yellow)' : '#f5dfe4');
+            const txtClass = seg.color === 'ok' ? 'var(--ok)' : (seg.color === 'warn' ? 'var(--warn)' : 'var(--danger)');
+            const icon = seg.color === 'ok' ? '✓' : (seg.color === 'warn' ? '!' : '✕');
+
+            const card = document.createElement('div');
+            card.style.cssText = `display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #fff; border: 1px solid var(--line-strong); border-radius: 11px;`;
+            
+            if (seg.color === 'crit') card.style.borderColor = 'var(--danger)';
+            
+            card.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 24px; height: 24px; border-radius: 50%; background: ${bgClass}; color: ${txtClass}; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">${icon}</div>
+                    <div>
+                        <div style="font-size: 11.5px; font-weight: 800; color: var(--ink);">${seg.id}</div>
+                        <div style="font-size: 10.5px; color: var(--muted); margin-top: 2px;">Tramo Físico: ${seg.desc}</div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 11px; font-weight: 800; color: ${txtClass};">${seg.estado}</div>
+                </div>
+            `;
+            contenedor.appendChild(card);
+        });
+    }
+
     function validateService() {
       let isValid = true;
-      ['origen', 'destino'].forEach(id => {
-        const input = document.getElementById(id);
-        const err = document.getElementById('err-' + id);
-        if (!input.value.trim()) {
-          input.classList.add('bad');
-          err.style.display = 'block';
+
+      // 1. Validar si seleccionó ruta
+      const rutaSelect = document.getElementById('ruta');
+      const errRuta = document.getElementById('err-ruta');
+      if (!rutaSelect.value) {
+        rutaSelect.classList.add('bad');
+        errRuta.style.display = 'block';
+        isValid = false;
+      } else {
+        rutaSelect.classList.remove('bad');
+        errRuta.style.display = 'none';
+      }
+
+      // 2. Validar Fecha de Activación (NUEVO)
+      const fechaInput = document.getElementById('fechaActivacion');
+      const errFecha = document.getElementById('err-fecha');
+      if (!fechaInput.value.trim()) {
+        fechaInput.classList.add('bad');
+        errFecha.style.display = 'block';
+        isValid = false;
+      } else {
+        fechaInput.classList.remove('bad');
+        errFecha.style.display = 'none';
+      }
+
+      // 3. Bloquear guardado si hay un segmento crítico (roto) sin resolver
+      const tieneError = segmentosActuales.some(s => s.color === 'crit');
+      if (tieneError) {
+          document.getElementById('err-respaldo').style.display = 'block';
           isValid = false;
-        } else {
-          input.classList.remove('bad');
-          err.style.display = 'none';
-        }
-      });
+      }
 
       if (isValid) {
-        window.location.href = 'service-success.html';
+        const opcion = rutaSelect.options[rutaSelect.selectedIndex];
+        const segmentosFinales = segmentosActuales.map(s => s.id).join(',');
+
+        const params = new URLSearchParams({
+          cliente: document.getElementById('cliente').value.trim(),
+          ruta: rutaSelect.value,
+          nombreRuta: opcion.text,
+          origen: opcion.dataset.origen,
+          destino: opcion.dataset.destino,
+          fechaActivacion: fechaInput.value.trim(),
+          segmentos: segmentosFinales
+        });
+        window.location.href = 'service-confirm.html?' + params.toString();
       }
     }
   </script>

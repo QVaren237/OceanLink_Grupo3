@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle Mantenimiento · OceanLink</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand brand-side"><img class="brand-img" src="assets/logo.png" alt="OceanLink"></div>
+    <nav class="nav-sec">
+      <div class="nav-label">Módulos</div>
+      <a class="nav-item active" href="mantenimientos.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Mantenimientos</span>
+      </a>
+      <a class="nav-item" href="mantenimientos-historial.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span>Historial</span>
+      </a>
+    </nav>
+    <div class="side-foot"><div class="role-badge"><div class="rl">Rol activo</div><div class="rn"><span class="dot" style="background:#e3aa59"></span>Maintenance Coord.</div></div></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="crumb">OceanLink / Maintenance Coordinator</div><div class="grow"></div>
+      
+      <div class="userpill" tabindex="0">
+        <div class="avatar">GG</div>
+        <div class="uinfo">
+            <div class="un">Gerson Garcia</div>
+            <div class="ur">Maintenance Coord.</div>
+        </div>
+        <span class="ucaret">▾</span>
+        <div class="usermenu">
+            <a href="editar-perfil.html">Editar perfil</a>
+            <a href="login.html">Cerrar sesión</a>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="content">
+      <div class="back-row"><a href="mantenimientos.html" class="btn btn-outline">Volver</a></div>
+      
+      <div class="page-head">
+        <div><h1>MNT-089: Cambio de amplificador óptico</h1></div>
+        <div class="grow"></div>
+        <a class="btn btn-outline" href="mantenimiento-estado.html">Modificar Estado</a>
+        <button class="btn btn-primary" onclick="finalizarMantenimiento()">Registrar Finalización</button>
+      </div>
+
+      <div class="info-strip" style="margin-bottom: 18px; border: 1px solid #c0e0dc;">
+        <div class="ii">!</div>
+        <div>
+          <div class="it">Mantenimiento Correctivo — Origen: INC-2026-0181</div>
+          <div class="id">Esta intervención física está diseñada para resolver la pérdida de señal reportada por el Network Operator.</div>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="detail-card">
+            <div class="dc-head"><div><div class="dc-sub">Planificación</div><h3>Datos Generales</h3></div><span id="badgeEstado" class="pill pill-warn"><span class="dot"></span>Programado</span></div>
+            <div class="data-list">
+              <div class="data-label">Infraestructura</div><div><span class="seg-tag">SEG-01</span> Lurín ↔ Arica</div>
+              <div class="data-label">Fecha y Hora</div><div>20/10/2026 02:00</div>
+              <div class="data-label">Duración Estimada</div><div>4 horas</div>
+            </div>
+          </div>
+
+          <div class="detail-card">
+            <div class="dc-head"><div><div class="dc-sub">Bitácora</div><h3>Registrar Actividades</h3></div></div>
+            <div class="card-pad" style="border-bottom: 1px solid var(--line);">
+              <div style="display: flex; gap: 10px;">
+                <input type="text" class="input" placeholder="Escribe una nueva actividad..." style="flex:1;">
+                <button class="btn btn-outline" onclick="alert('Actividad registrada con éxito')">Agregar</button>
+              </div>
+            </div>
+            <div class="obs-list">
+              <div class="obs-item"><div class="obs-date">19/10/2026 · 14:00</div><div class="obs-text">Materiales y repuestos verificados y listos en almacén.</div></div>
+              <div class="obs-item"><div class="obs-date">18/10/2026 · 09:30</div><div class="obs-text">Ventana de mantenimiento aprobada por gerencia técnica.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="detail-card">
+            <div class="dc-head"><div><div class="dc-sub">Impacto Comercial</div><h3>Consultar Servicios Afectados</h3></div></div>
+            <div class="notice-soft">Estos servicios perderán conectividad temporal si no cuentan con una ruta de protección activa en el Network Operator.</div>
+            <table class="mini-table">
+              <thead><tr><th>Servicio</th><th>Cliente</th><th>Capacidad</th></tr></thead>
+              <tbody>
+                <tr><td class="strong">SRV-001</td><td>América Móvil Perú</td><td>50 Gbps</td></tr>
+                <tr><td class="strong">SRV-015</td><td>Telefónica del Perú</td><td>100 Gbps</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="appfoot"><span>OceanLink · Centro de operaciones</span></div>
+  </div>
+</div>
+
+<script>
+  // Script para simular el cambio de estado si se viene de la página de éxito
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('estadoActualizado') === 'true') {
+        const badge = document.getElementById('badgeEstado');
+        badge.className = `pill pill-ok`;
+        badge.innerHTML = `<span class="dot"></span>En Curso`;
+    }
+  });
+
+  function finalizarMantenimiento() {
+    alert("Mantenimiento cerrado. \n\nEl sistema ha notificado al Network Operator que la infraestructura física ya fue reparada, permitiéndole cambiar el estado de la incidencia INC-2026-0181 a 'Servicio Restaurado'.");
+    window.location.href='mantenimientos.html';
+  }
+</script>
+</body>
+</html>
